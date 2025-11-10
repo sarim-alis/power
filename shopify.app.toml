@@ -1,0 +1,26 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "fb6ec894a1cc592a59b0ec16f63579eb"
+name = "empowered-merchandise-app"
+application_url = "https://example.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2026-01"
+
+[access_scopes]
+scopes = "write_products, read_products, read_orders, write_app_proxy"
+
+[auth]
+redirect_urls = [ "https://example.com/api/auth" ]
+
+# App Proxy Configuration
+# Development: Use full cloudflared URL from terminal
+# Production: Use permanent domain URL
+[app_proxy]
+subpath = "shop-dash"
+url = "https://throat-vsnet-delhi-arnold.trycloudflare.com/api/app-proxy"
+prefix = "apps"             
