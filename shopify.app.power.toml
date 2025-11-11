@@ -17,3 +17,8 @@ scopes = "read_orders,read_products,write_app_proxy,write_products"
 
 [auth]
 redirect_urls = [ "https://example.com/api/auth" ]
+
+[app_proxy]
+prefix = "apps"
+subpath = "shop-dash"
+url = "https://example.com/api/app-proxy"

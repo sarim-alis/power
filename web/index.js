@@ -580,8 +580,8 @@ app.get("/api/orders/all", async (_req, res) => {
                   currencyCode
                 }
               }
-              financialStatus
-              fulfillmentStatus
+              displayFinancialStatus
+              displayFulfillmentStatus
               customer {
                 firstName
                 lastName
@@ -614,8 +614,8 @@ app.get("/api/orders/all", async (_req, res) => {
       updatedAt: edge.node.updatedAt,
       totalPrice: edge.node.totalPriceSet.shopMoney.amount,
       currency: edge.node.totalPriceSet.shopMoney.currencyCode,
-      financialStatus: edge.node.financialStatus,
-      fulfillmentStatus: edge.node.fulfillmentStatus,
+      displayFinancialStatus: edge.node.displayFinancialStatus,
+      displayFulfillmentStatus: edge.node.displayFulfillmentStatus,
       customer: edge.node.customer ? {
         firstName: edge.node.customer.firstName,
         lastName: edge.node.customer.lastName,

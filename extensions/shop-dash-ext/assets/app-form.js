@@ -72,16 +72,23 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       console.log('Response status:', response.status);
-      const result = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let result;
+      if (contentType.includes('application/json')) {
+        result = await response.json();
+      } else {
+        const text = await response.text();
+        result = { success: response.ok, message: text || 'Non-JSON response' };
+      }
       console.log('Response data:', result);
 
-      if (response.ok && result.success) {
+      if (response.ok && result && result.success) {
         // ✅ Success
         showMessage(result.message || 'Registration successful! 🎉', 'success');
         form.reset();
       } else {
         // ❌ Error
-        showMessage(result.message || 'Failed to submit form', 'error');
+        showMessage((result && result.message) || 'Failed to submit form', 'error');
       }
 
     } catch (error) {
